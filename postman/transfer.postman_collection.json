@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "42a69701-5c35-425a-8c75-7fa731a1c188",
+		"name": "transfer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31493693",
+		"_collection_link": "https://cloudy-satellite-384869.postman.co/workspace/Coach-Donee~027bb3e7-0d7b-48fc-91b8-a843cc925b50/collection/31493693-42a69701-5c35-425a-8c75-7fa731a1c188?action=share&source=collection_link&creator=31493693"
+	},
+	"item": [
+		{
+			"name": "test-postman",
+			"item": [
+				{
+					"name": "Add Transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fromCountry\" : \"KR\",\r\n    \"toCountry\" : \"USD\",\r\n    \"amount\" : 100,\r\n    \"convertedAmount\" : 200,\r\n    \"status\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/transfer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"transfer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "convertAmount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fromCountry\" : \"LKR\",\r\n    \"toCountry\" : \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/transfer/convert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"transfer",
+								"convert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/transfer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"transfer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/transfer/67c125574721ba65b536f594",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"transfer",
+								"67c125574721ba65b536f594"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
