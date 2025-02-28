@@ -20,7 +20,7 @@ This project is a **Currency Converter** that allows users to convert money betw
 
 ### **1. Clone the repository**
 ```sh
- git clone https://github.com/yourusername/currency-converter.git
+ git clone https://github.com/Ushan2001/currency-converter.git
  cd currency-converter
 ```
 
