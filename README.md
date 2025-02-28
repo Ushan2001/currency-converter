@@ -14,7 +14,6 @@ This project is a **Currency Converter** that allows users to convert money betw
 - **Frontend:** React.js, Material UI
 - **Backend:** Node.js, Express.js, MongoDB Atlas
 - **API:** ExchangeRate-API
-- **Deployment:** Vercel (Frontend), Render (Backend)
 
 ---
 ## Installation & Setup
