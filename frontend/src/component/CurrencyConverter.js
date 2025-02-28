@@ -24,6 +24,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.css";
+import config from "../config";
 
 function CurrencyConverter() {
   const [fromCountry, setFromCountry] = useState("");
@@ -41,9 +42,7 @@ function CurrencyConverter() {
   const fetchTransferData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/v1/transfer/"
-      );
+      const response = await axios.get(`${config.apiUrl}/transfer/`);
       setTransferData(response.data);
     } catch (error) {
       console.error("Error fetching transfer data:", error);
@@ -65,13 +64,10 @@ function CurrencyConverter() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/transfer/convert",
-        {
-          fromCountry,
-          toCountry,
-        }
-      );
+      const response = await axios.post(`${config.apiUrl}/transfer/convert`, {
+        fromCountry,
+        toCountry,
+      });
       setExchangeRate(response.data.exchangeRate);
       setConvertedAmount((amount * response.data.exchangeRate).toFixed(3));
     } catch (error) {
@@ -94,16 +90,13 @@ function CurrencyConverter() {
     }
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/transfer/",
-        {
-          fromCountry,
-          toCountry,
-          amount,
-          convertedAmount,
-          status: "active",
-        }
-      );
+      const response = await axios.post(`${config.apiUrl}/transfer/`, {
+        fromCountry,
+        toCountry,
+        amount,
+        convertedAmount,
+        status: "active",
+      });
 
       fetchTransferData();
       toast.success("Transfer successful!");
@@ -124,7 +117,7 @@ function CurrencyConverter() {
   const handleRevoke = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/v1/transfer/${id}`);
+      await axios.delete(`${config.apiUrl}/transfer/${id}`);
       setTransferData(transferData.filter((item) => item._id !== id));
       toast.success("Transfer revoked successfully!");
     } catch (error) {
