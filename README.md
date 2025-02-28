@@ -21,7 +21,6 @@ This project is a **Currency Converter** that allows users to convert money betw
 ### **1. Clone the repository**
 ```sh
  git clone https://github.com/Ushan2001/currency-converter.git
- cd currency-converter
 ```
 
 ### **2. Setup Backend**
@@ -32,18 +31,19 @@ This project is a **Currency Converter** that allows users to convert money betw
 
 #### **2.1 Create `.env` file in `backend/`**
 ```sh
-MONGO_URI=your_mongodb_atlas_connection_string
-EXCHANGE_API_KEY=your_exchangerate_api_key
+MONGO_URI = mongodb+srv://ushan:ushan2025@currencyconveter.on7qr.mongodb.net/?retryWrites=true&w=majority&appName=currencyConveter
+PORT = 5000
+EXCHANGE_API_KEY = 4beb1eb1343647c27388e5d9
 ```
 
 #### **2.2 Start the backend server**
 ```sh
- node server.js
+ npm start
 ```
 
 ### **3. Setup Frontend**
 ```sh
- cd ../frontend
+ cd frontend
  npm install
 ```
 
@@ -76,63 +76,41 @@ currency-converter/
 ---
 ## API Endpoints
 ### **1. Convert & Save Transfer**
-**POST** `/transfer`
+**POST** `/`
 ```json
 {
-  "fromCountry": "USD",
-  "toCountry": "LKR",
-  "amount": 10
+    "fromCountry" : "LKR",
+    "toCountry" : "USD",
+    "amount" : 100,
+    "convertedAmount" : 200,
+    "status": "active"
 }
 ```
 Response:
 ```json
-{
-  "fromCountry": "USD",
-  "toCountry": "LKR",
-  "amount": 10,
-  "convertedAmount": 3000,
-  "_id": "65f6e1a9c7e26f"
-}
+{"message":"Transfer added successfully!","newTransferData":{"fromCountry":"LKR","toCountry":"USD","amount":100,"convertedAmount":200,"createDate":"2025-02-28","createTime":"08:25:21","status":"active","_id":"67c125992e714f10b066e7a4","createdAt":"2025-02-28T02:55:21.892Z","updatedAt":"2025-02-28T02:55:21.892Z","__v":0}}
 ```
 
 ### **2. Get Transfer History**
-**GET** `/history`
+**GET** `/`
 ```json
 [
   {
-    "fromCountry": "USD",
-    "toCountry": "LKR",
-    "amount": 10,
-    "convertedAmount": 3000,
-    "_id": "65f6e1a9c7e26f"
-  }
+        "_id": "67c12547cda9d311016c4018",
+        "fromCountry": "LKR",
+        "toCountry": "USD",
+        "amount": 100,
+        "convertedAmount": 200,
+        "createDate": "2025-02-28",
+        "createTime": "08:23:59",
+        "status": "active"
+    },
 ]
 ```
 
 ### **3. Delete Transfer Record**
 **DELETE** `/transfer/:id`
-
 ---
-## Deployment
-### **Frontend:** Deploy to **Vercel**
-```sh
- cd frontend
- npm run build
- vercel deploy
-```
-
-### **Backend:** Deploy to **Render**
-```sh
- cd backend
- npm install -g vercel
- vercel deploy
-```
-
----
-## Live Demo (Optional)
-If you deployed the project, add your live demo link here:
-- **Frontend:** [Vercel Demo](https://your-frontend.vercel.app)
-- **Backend:** [Render API](https://your-backend.onrender.com)
 
 ---
 ## Notes
